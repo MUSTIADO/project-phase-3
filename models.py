@@ -19,53 +19,8 @@ class User(Base):
     password = Column(String, nullable=False)
     cart_items = relationship('CartItem', back_populates='user')
     orders = relationship('Order', back_populates='user')
-# class User(Base):
-#     __tablename__ = 'users'
-#     id = Column(Integer, primary_key=True)
-#     _username = Column(String, unique=True, nullable=False)
-#     password = Column(String, nullable=False)
-#     cart_items = relationship('CartItem', back_populates='user')
-#     orders = relationship('Order', back_populates='user')
-
-#     @property
-#     def username(self):
-#         return self._username
-
-#     @username.setter
-#     def username(self, value):
-#         if not value:
-#             raise ValueError("Username cannot be empty.")
-#         self._username = value.strip()
-
-#     @staticmethod
-#     def create(username, password):
-#         with Session() as session:
-#             user = User(username=username, password=password)
-#             session.add(user)
-#             session.commit()
-#             return user
-
-    # @staticmethod
-    # def delete(cls, user_id):
-    #     with Session() as session:
-    #         user = session.query(User).get(user_id)
-    #         if user:
-    #             session.delete(user)
-    #             session.commit()
-    #             print(f"User with ID {user_id} has been deleted.")
-    #         else:
-    #             print("User not found.")
-#     @staticmethod
-#     def get_all():
-#         with Session() as session:
-#             return session.query(User).all()
-
-    # @staticmethod
-    # def find_by_id(user_id):
-    #     with Session() as session:
-    #         return session.query(User).get(user_id)
-
-
+    
+    
 class Product(Base):
     __tablename__ = 'products'
     id = Column(Integer, primary_key=True)
