@@ -933,3 +933,32 @@ Traceback (most recent call last):
 TypeError: 'price' is an invalid keyword argument for OrderItem
 2024-06-12 18:04:41,931 - INFO - User logged out.
 2024-06-12 18:05:00,316 - INFO - User logged in: Abdifatah
+2024-06-12 18:11:27,300 - INFO - User logged out.
+2024-06-12 18:11:39,950 - INFO - User logged in: mustafa
+2024-06-12 18:11:54,987 - INFO - Product added to cart: FERRARI, User: mustafa
+2024-06-12 18:12:11,360 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 15:12:11.356171')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 18:30:42,531 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 15:30:42.529538')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 18:33:28,454 - INFO - User registered: FARHAN as User
+2024-06-12 18:33:43,797 - INFO - User logged in: FARHAN
+2024-06-12 18:51:25,875 - INFO - User logged out.
+2024-06-12 18:52:03,644 - INFO - User registered: MUSTAFA as Admin
+2024-06-12 18:52:17,838 - INFO - User logged in: MUSTAFA
+2024-06-12 18:52:49,202 - INFO - Product added: LAPTOP, Price: $3000.0
+2024-06-12 18:53:08,340 - INFO - Product added: TELEVISION, Price: $1000.0
+2024-06-12 18:53:19,612 - INFO - User logged out.
+2024-06-12 18:53:31,080 - INFO - User logged in: FARHAN
+2024-06-12 18:53:45,032 - INFO - Product added to cart: LAPTOP, User: FARHAN
+2024-06-12 18:53:55,006 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 15:53:55.004045')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 19:27:58,611 - INFO - Order placed: 1, User: FARHAN
+2024-06-12 19:28:16,638 - INFO - Order placed: 2, User: FARHAN
+2024-06-12 19:31:26,017 - INFO - Product added to cart: TELEVISION, User: FARHAN
+2024-06-12 19:31:45,080 - INFO - Order placed: 3, User: FARHAN

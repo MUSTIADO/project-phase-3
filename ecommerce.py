@@ -178,26 +178,36 @@ def place_order():
     if not user:
         print("Please login first.")
         return
+
     try:
         with DBSession() as session:
             cart_items = session.query(CartItem).filter_by(user_id=user.id).all()
             if not cart_items:
-                print("Your cart is empty.")
+                print("Your cart is empty. Please add items to your cart before placing an order.")
                 return
-            order = Order(user_id=user.id, status=OrderStatus.PENDING)
-            session.add(order)
-            session.commit()
+
+            total = 0
+            order_items = []
             for item in cart_items:
                 product = session.query(Product).filter_by(id=item.product_id).first()
-                order_item = OrderItem(order_id=order.id, product_id=product.id, quantity=1, price=product.price)
-                session.add(order_item)
-                session.delete(item)  # Remove item from cart after placing order
+                total += product.price
+                order_items.append(OrderItem(product_id=product.id, quantity=1, unit_price=product.price))
+
+            order = Order(user_id=user.id, total=total, status=OrderStatus.PENDING)
+            order.order_items = order_items
+            session.add(order)
             session.commit()
+
+            # Remove items from the cart after placing the order
+            session.query(CartItem).filter_by(user_id=user.id).delete()
+            
             print("Order placed successfully.")
             logging.info(f"Order placed: {order.id}, User: {user.username}")
+
     except Exception as e:
         print("An error occurred while placing the order.")
         logging.error(f"Error placing order: {e}")
+
 
 # View orders
 def view_orders():
