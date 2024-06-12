@@ -2,11 +2,16 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey, Enum, DateTim
 from sqlalchemy.orm import relationship, declarative_base, sessionmaker
 from sqlalchemy import create_engine
 from datetime import datetime
-import enum
+from enum import Enum as PyEnum
 
 Base = declarative_base()
 
-class OrderStatus(enum.Enum):
+
+class UserRole(PyEnum):
+    USER = "User"
+    ADMIN = "Admin"
+
+class OrderStatus(PyEnum):
     PENDING = "Pending"
     PROCESSED = "Processed"
     DELIVERED = "Delivered"
@@ -19,7 +24,8 @@ class User(Base):
     password = Column(String, nullable=False)
     cart_items = relationship('CartItem', back_populates='user')
     orders = relationship('Order', back_populates='user')
-    
+    role = Column(Enum(UserRole), default=UserRole.USER, nullable=False)
+
     
 class Product(Base):
     __tablename__ = 'products'
@@ -35,6 +41,7 @@ class CartItem(Base):
     product_id = Column(Integer, ForeignKey('products.id'), nullable=False)
     user = relationship('User', back_populates='cart_items')
     product = relationship('Product', back_populates='cart_items')
+
 
 class Order(Base):
     __tablename__ = 'orders'
@@ -52,6 +59,7 @@ class OrderItem(Base):
     order_id = Column(Integer, ForeignKey('orders.id'), nullable=False)
     product_id = Column(Integer, ForeignKey('products.id'), nullable=False)
     quantity = Column(Integer, nullable=False)
+    unit_price = Column(Float, nullable=False)
     order = relationship('Order', back_populates='order_items')
     product = relationship('Product')
 

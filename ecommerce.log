@@ -411,3 +411,525 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint fail
 [parameters: (None, 1)]
 (Background on this error at: https://sqlalche.me/e/20/gkpj)
 2024-06-12 12:13:30,344 - WARNING - User with ID 13 not found.
+2024-06-12 12:29:12,287 - ERROR - Error deleting user with ID 1: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.user_id
+[SQL: UPDATE orders SET user_id=? WHERE orders.id = ?]
+[parameters: (None, 1)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: orders.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 290, in delete_user
+    session.commit()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2017, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 85, in save_obj
+    _emit_update_statements(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 912, in _emit_update_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.user_id
+[SQL: UPDATE orders SET user_id=? WHERE orders.id = ?]
+[parameters: (None, 1)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 12:34:47,571 - INFO - Order 2 status updated to DELIVERED for user annah.
+2024-06-12 14:23:11,367 - ERROR - Error registering user: 'role' is an invalid keyword argument for User
+2024-06-12 14:39:27,629 - ERROR - Error registering user: 'role' is an invalid keyword argument for User
+2024-06-12 14:46:53,608 - ERROR - Error registering user: (sqlite3.OperationalError) no such column: users.role
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.role AS users_role 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mustafa', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-06-12 14:52:49,701 - ERROR - Error registering user: (sqlite3.OperationalError) no such column: users.role
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.role AS users_role 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mustafa', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-06-12 14:54:19,554 - ERROR - Error registering user: (sqlite3.OperationalError) no such column: users.role
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.role AS users_role 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mustafa', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-06-12 14:55:19,882 - INFO - User registered: mustafa as User
+2024-06-12 14:55:47,999 - INFO - User logged in: mustafa
+2024-06-12 15:03:37,518 - INFO - User logged in: mustafa
+2024-06-12 15:03:55,781 - INFO - User registered: annah as User
+2024-06-12 15:04:27,819 - INFO - User logged in: mustafa
+2024-06-12 15:14:17,054 - INFO - User logged out.
+2024-06-12 15:14:28,057 - INFO - User logged in: mustafa
+2024-06-12 15:14:33,669 - INFO - User logged out.
+2024-06-12 15:17:02,766 - INFO - User logged in: mustafa
+2024-06-12 15:17:06,774 - INFO - User logged out.
+2024-06-12 15:17:34,020 - INFO - User registered: Abdifatah as Admin
+2024-06-12 15:18:00,276 - INFO - User logged in: Abdifatah
+2024-06-12 15:20:10,199 - INFO - User logged out.
+2024-06-12 15:20:56,738 - INFO - User registered: Ahmed as User
+2024-06-12 15:21:36,436 - INFO - User logged in: Abdifatah
+2024-06-12 15:29:01,201 - INFO - User with ID 2 deleted.
+2024-06-12 15:29:55,854 - INFO - User logged out.
+2024-06-12 15:31:03,406 - INFO - User logged in: Ahmed
+2024-06-12 15:32:03,201 - INFO - User logged in: Abdifatah
+2024-06-12 15:32:41,924 - INFO - Product added: BUGATTI, Price: $200000.0
+2024-06-12 15:33:13,121 - INFO - Product added: FERRARI, Price: $250000.0
+2024-06-12 15:33:18,400 - INFO - User logged out.
+2024-06-12 15:33:31,715 - INFO - User logged in: mustafa
+2024-06-12 15:47:37,295 - INFO - User logged out.
+2024-06-12 17:05:38,174 - INFO - User registered: BETTY as User
+2024-06-12 17:06:04,153 - INFO - User logged in: BETTY
+2024-06-12 17:06:12,879 - INFO - User logged out.
+2024-06-12 17:06:37,773 - INFO - User logged in: Abdifatah
+2024-06-12 17:07:10,888 - INFO - Product added: YATCH, Price: $300000.0
+2024-06-12 17:07:52,842 - INFO - User with ID 5 deleted.
+2024-06-12 17:08:26,057 - INFO - User logged out.
+2024-06-12 17:08:42,172 - INFO - User logged in: Ahmed
+2024-06-12 17:09:13,876 - INFO - Product added to cart: BUGATTI, User: Ahmed
+2024-06-12 17:09:28,026 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (4, None, 'PENDING', '2024-06-12 14:09:28.023503')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:09:45,987 - INFO - Product added to cart: FERRARI, User: Ahmed
+2024-06-12 17:10:07,185 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (4, None, 'PENDING', '2024-06-12 14:10:07.183284')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:10:28,667 - INFO - Product added to cart: BUGATTI, User: Ahmed
+2024-06-12 17:11:02,230 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (4, None, 'PENDING', '2024-06-12 14:11:02.227780')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:14:29,316 - INFO - User registered: Virginia as User
+2024-06-12 17:15:00,167 - INFO - User logged in: Abdifatah
+2024-06-12 17:17:15,752 - INFO - Product added to cart: BUGATTI, User: Abdifatah
+2024-06-12 17:17:24,440 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (3, None, 'PENDING', '2024-06-12 14:17:24.438803')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:19:57,272 - ERROR - Error deleting user with ID 4: (sqlite3.IntegrityError) NOT NULL constraint failed: cart_items.user_id
+[SQL: UPDATE cart_items SET user_id=? WHERE cart_items.id = ?]
+[parameters: [(None, 1), (None, 2), (None, 3)]]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: cart_items.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 114, in delete_user
+    session.commit()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2017, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 85, in save_obj
+    _emit_update_statements(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 912, in _emit_update_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: cart_items.user_id
+[SQL: UPDATE cart_items SET user_id=? WHERE cart_items.id = ?]
+[parameters: [(None, 1), (None, 2), (None, 3)]]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:20:18,117 - INFO - User with ID 5 deleted.
+2024-06-12 17:20:25,775 - INFO - User logged out.
+2024-06-12 17:21:12,190 - INFO - User logged in: mustafa
+2024-06-12 17:24:56,467 - INFO - Product added to cart: BUGATTI, User: mustafa
+2024-06-12 17:25:10,206 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 14:25:10.204136')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:28:26,804 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 14:28:26.803264')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:32:39,382 - ERROR - Error placing order: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 14:32:39.379553')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: orders.total
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 189, in place_order
+    session.commit()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2017, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: orders.total
+[SQL: INSERT INTO orders (user_id, total, status, created_at) VALUES (?, ?, ?, ?)]
+[parameters: (1, None, 'PENDING', '2024-06-12 14:32:39.379553')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-12 17:34:29,183 - ERROR - Error placing order: 'price' is an invalid keyword argument for OrderItem
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 204, in place_order
+    order_item = OrderItem(order_id=order.id, product_id=product.id, quantity=1, price=product.price)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 564, in _initialize_instance
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 562, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2139, in _declarative_constructor
+    raise TypeError(
+TypeError: 'price' is an invalid keyword argument for OrderItem
+2024-06-12 17:35:55,193 - ERROR - Error placing order: 'unit_price' is an invalid keyword argument for OrderItem
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 204, in place_order
+    order_item = OrderItem(order_id=order.id, product_id=product.id, quantity=1, unit_price=product.price)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 564, in _initialize_instance
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 562, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2139, in _declarative_constructor
+    raise TypeError(
+TypeError: 'unit_price' is an invalid keyword argument for OrderItem
+2024-06-12 17:39:07,124 - ERROR - Error placing order: 'unit_price' is an invalid keyword argument for OrderItem
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 204, in place_order
+    # Use correct field names for OrderItem
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 564, in _initialize_instance
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 562, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2139, in _declarative_constructor
+    raise TypeError(
+TypeError: 'unit_price' is an invalid keyword argument for OrderItem
+2024-06-12 17:42:41,691 - ERROR - Error placing order: (sqlite3.OperationalError) table order_items has no column named price
+[SQL: INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)]
+[parameters: (4, 1, 1, 200000.0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: table order_items has no column named price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 208, in place_order
+    session.commit()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2017, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table order_items has no column named price
+[SQL: INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)]
+[parameters: (4, 1, 1, 200000.0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-06-12 17:43:45,469 - ERROR - Error placing order: (sqlite3.OperationalError) table order_items has no column named price
+[SQL: INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)]
+[parameters: (5, 1, 1, 200000.0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: table order_items has no column named price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 207, in place_order
+    session.commit()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2017, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1302, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1277, in _prepare_impl
+    self.session.flush()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4341, in flush
+    self._flush(objects)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4476, in _flush
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4437, in _flush
+    flush_context.execute()
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table order_items has no column named price
+[SQL: INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)]
+[parameters: (5, 1, 1, 200000.0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-06-12 17:47:34,825 - ERROR - Error placing order: 'price' is an invalid keyword argument for OrderItem
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 204, in place_order
+    order_item = OrderItem(order_id=order.id, product_id=product.id, quantity=1, price=product.price)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 564, in _initialize_instance
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 562, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2139, in _declarative_constructor
+    raise TypeError(
+TypeError: 'price' is an invalid keyword argument for OrderItem
+2024-06-12 17:50:58,556 - ERROR - Error placing order: 'price' is an invalid keyword argument for OrderItem
+Traceback (most recent call last):
+  File "/home/mustafa/project-phase-3/ecommerce.py", line 204, in place_order
+    try:
+        
+  File "<string>", line 4, in __init__
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 564, in _initialize_instance
+    with util.safe_reraise():
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 562, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/home/mustafa/.pyenv/versions/3.11.0/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2139, in _declarative_constructor
+    raise TypeError(
+TypeError: 'price' is an invalid keyword argument for OrderItem
+2024-06-12 18:04:41,931 - INFO - User logged out.
+2024-06-12 18:05:00,316 - INFO - User logged in: Abdifatah
